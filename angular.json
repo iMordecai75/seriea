@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "seriea"
+    }
+  },
+  "defaultProject": "seriea",
+  "cli": {
+    "analytics": "7643a43f-83ce-40ca-a3f4-868cc728e769"
+  }
 }
