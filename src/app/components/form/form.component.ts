@@ -16,6 +16,7 @@ export class FormComponent implements OnInit {
 
   teams: Team[];
   entries: Forecast[];
+  title: string;
   modelteam1: string;
   modelteam2: string;
   modelteam3: string;
@@ -43,6 +44,19 @@ export class FormComponent implements OnInit {
       .subscribe((res: ApiResponse) => {
         this.entries = res.items as Forecast[];
         this.teams = null;
+        this.title = "Your Ranking";
+      });
+  }
+
+  getRanking(): void {
+    this.ranking.getForecasts()
+      .subscribe((res: ApiResponse) => {
+        if (res.items.length > 0) {
+          this.entries = res.items as Forecast[];
+          this.title = "Your Ranking";
+        } else {
+          this.getTeams();
+        }
       });
   }
 
@@ -50,6 +64,7 @@ export class FormComponent implements OnInit {
     this.ranking.getTeams()
       .subscribe((res: ApiResponse) => {
         this.teams = res.items as Team[];
+        this.title = "Create Ranking";
       });
   }
 
@@ -57,7 +72,7 @@ export class FormComponent implements OnInit {
     if (!this.auth.notExpired()) {
       this.router.navigateByUrl('login');
     } else {
-      this.getTeams();
+      this.getRanking();
     }
   }
 

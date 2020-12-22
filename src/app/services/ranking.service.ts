@@ -22,6 +22,13 @@ export class RankingService {
 
   }
 
+  getForecasts(): Observable<ApiResponse> {
+    const token = localStorage.getItem('token');
+    const options = this.headers(token);
+
+    return this.http.get<ApiResponse>(`${API}/forecasts.php`, { headers: options });
+  }
+
   postForecasts(datiForm: any[]): Observable<ApiResponse> {
     const token = localStorage.getItem('token');
     const options = this.headers(token);
