@@ -24,7 +24,7 @@ export class AuthService {
       .pipe(
         map((res: AuthResponse) => {
           if (res.User_sToken) {
-            this.setSession(res.User_sToken);
+            this.setSession(res);
           }
 
           return res;
@@ -87,10 +87,11 @@ export class AuthService {
     return throwError(`Si è verificato un errore di tipo: ${error.message}`);
   }
 
-  private setSession(jwt: string): void {
-    const expire: number = new Date().getTime() + 60000;
+  private setSession(res: AuthResponse): void {
+    const expire: number = new Date().getTime() + res.User_iScadenza;
 
-    localStorage.setItem('token', jwt);
+    localStorage.setItem('token', res.User_sToken);
+    localStorage.setItem('name', res.User_sFirstname + ' ' + res.User_sLastname);
     localStorage.setItem('expire', expire.toString());
   }
 
