@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormComponent } from './components/form/form.component';
 import { TeamSelectComponent } from './components/team-select/team-select.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { NavComponent } from './components/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     LoginComponent,
     FooterComponent,
     FormComponent,
-    TeamSelectComponent
+    TeamSelectComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
