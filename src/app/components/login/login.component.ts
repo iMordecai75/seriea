@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           if (res.error) {
             this.showerrmsg = res.msg;
           } else {
-            //this.router.navigateByUrl('dashboard');
+            this.router.navigateByUrl('user_ranking');
           }
         },
         error => {

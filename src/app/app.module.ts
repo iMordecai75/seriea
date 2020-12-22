@@ -7,12 +7,16 @@ import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormComponent } from './components/form/form.component';
+import { TeamSelectComponent } from './components/team-select/team-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    FooterComponent
+    FooterComponent,
+    FormComponent,
+    TeamSelectComponent
   ],
   imports: [
     BrowserModule,
