@@ -43,6 +43,10 @@ export class RankingService {
       );
   }
 
+  getMatchsDay() {
+    return this.http.get<ApiResponse>(`${API}/matches.php`);
+  }
+
   private body(objs: any[]): HttpParams {
     let params = new HttpParams();
     objs.forEach(element => {

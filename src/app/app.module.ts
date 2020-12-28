@@ -11,6 +11,9 @@ import { FormComponent } from './components/form/form.component';
 import { TeamSelectComponent } from './components/team-select/team-select.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { NavComponent } from './components/nav/nav.component';
+import { MatchesDayComponent } from './components/matches-day/matches-day.component';
+import { ReplacePipe } from './pipes/replace.pipe';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { NavComponent } from './components/nav/nav.component';
     FooterComponent,
     FormComponent,
     TeamSelectComponent,
-    NavComponent
+    NavComponent,
+    MatchesDayComponent,
+    ReplacePipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
