@@ -1,0 +1,41 @@
+<div class="card mb-4" *ngIf="ranking">
+  <div class="card-header">
+    <div class="col-md-12">
+      <h3>Classifica</h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="rankingTable_wrapper" class="dataTables_wrapper dt-bootstrap4 container p-0">
+          <div class="col-sm-12 p-0">
+            <table class="table table-bordered dataTable" width="100%">
+              <thead>
+                <tr class="bg-primary">
+                  <th role="col" class="text-center text-white" style="width: 10%">#</th>
+                  <th role="col" class="text-center text-white">
+                    Team
+                  </th>
+                  <th role="col" class="text-center text-white">PG</th>
+                  <th role="col" class="text-center text-white">R</th>
+                  <th role="col" class="text-center text-white">P</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let team of ranking;index as i">
+                  <td class="text-center bg-green" style="width: 10%" *ngIf="i === 0">{{i+1}}</td>
+                  <td class="text-center bg-blue" style="width: 10%" *ngIf="i > 0 && i < 4">{{i+1}}</td>
+                  <td class="text-center bg-red" style="width: 10%" *ngIf="i === 4">{{i+1}}</td>
+                  <td class="text-center bg-brown" style="width: 10%" *ngIf="i === 5">{{i+1}}</td>
+                  <td class="text-center" style="width: 10%" *ngIf="i > 5">{{i+1}}</td>
+                  <td>{{team.Ranking_sTeam}}</td>
+                  <td class="text-center">{{team.Ranking_iGiocate}}</td>
+                  <td class="text-center">{{team.Ranking_iGoalFatti}}:{{team.Ranking_iGoalSubiti}}</td>
+                  <td class="text-center">{{team.Ranking_iPunti}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

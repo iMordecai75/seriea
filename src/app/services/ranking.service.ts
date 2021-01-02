@@ -43,8 +43,42 @@ export class RankingService {
       );
   }
 
-  getMatchsDay() {
+  getMatchsDay(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${API}/matches.php`);
+  }
+
+  getRanking(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${API}/ranking.php`);
+  }
+
+  postResults(data: any[]): Observable<ApiResponse> {
+    const token = localStorage.getItem('token');
+    const options = this.headers(token);
+    const body = this.body(data);
+
+    return this.http.patch<ApiResponse>(`${API}/matches.php`, body, { headers: options })
+      .pipe(
+        map((res: ApiResponse) => {
+          return res;
+        }),
+        catchError(this.errorHandler)
+      );
+  }
+
+  postRanking() {
+    const token = localStorage.getItem('token');
+    const options = this.headers(token);
+    const body = this.body([]);
+
+    return this.http.post<ApiResponse>(`${API}/ranking.php`, body, { headers: options })
+      .pipe(
+        map(
+          (res: ApiResponse) => {
+            return res;
+          }
+        ),
+        catchError(this.errorHandler)
+      );
   }
 
   private body(objs: any[]): HttpParams {

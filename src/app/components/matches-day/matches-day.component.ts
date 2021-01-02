@@ -23,19 +23,19 @@ export class MatchesDayComponent implements OnInit {
   }
 
   getMatchesDay(day: string): void {
-    this.dayMatches = this.allMatches.filter((elem: Match) => elem.round === day);
+    this.dayMatches = this.allMatches.filter((elem: Match) => elem.Match_sRound === day);
   }
 
   getDays() {
     this.days = this.allMatches.map((item: Match) => {
-      return item.round;
+      return item.Match_sRound;
     }).filter((item: string, index: number, self: string[]) => {
       return self.indexOf(item) === index
     });
     let tmp:Match[] = this.allMatches.filter((item: Match) => (
-      item.score !== undefined
+      item.Match_iState === "1"
     ));
-    this.day = tmp[tmp.length - 1].round;
+    this.day = tmp[tmp.length - 1].Match_sRound;
     this.getMatchesDay(this.day);
   }
 

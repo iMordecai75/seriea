@@ -56,11 +56,12 @@ export class AuthService {
 
     if (localStorage.getItem('expire')) {
       let expire: number = parseInt(localStorage.getItem('expire'), 10);
+      let time: number = parseInt(localStorage.getItem('time'), 10);
 
       notExpired = new Date().getTime() < expire;
 
       if (notExpired) {
-        expire = new Date().getTime() + 60000;
+        expire = new Date().getTime() + time;
 
         localStorage.setItem('expire', expire.toString());
       } else {
@@ -92,6 +93,7 @@ export class AuthService {
 
     localStorage.setItem('token', res.User_sToken);
     localStorage.setItem('name', res.User_sFirstname + ' ' + res.User_sLastname);
+    localStorage.setItem('time', res.User_iScadenza.toString());
     localStorage.setItem('expire', expire.toString());
   }
 

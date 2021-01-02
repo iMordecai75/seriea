@@ -1,0 +1,68 @@
+<div class="bg-primary">
+  <div id="layoutAuthentication">
+    <div id="layoutAuthentication_content">
+      <main>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-7">
+              <a class="text-white" [routerLink]="['/user_ranking']">Torna al pronostico</a>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-7">
+              <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header">
+                  <div class="col-md-12">
+                    <div class="form-group row m-0">
+                      <select class="form-control" name="day" id="day" [(ngModel)]="day" (change)="changeHandler()">
+                        <option *ngFor="let day of days;" [value]="day">{{day}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <span id="message">{{this.message}}</span>
+                  <form novalidate #f="ngForm" method="post" *ngIf="dayMatches" (submit)="sendResults()">
+                    <table class="table table-bordered dataTable">
+                      <thead>
+                        <tr class="bg-primary">
+                          <th role="col" colspan="3" class="text-center text-white">
+                            <span>{{dayMatches[0].Match_sRound}}</span>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let match of dayMatches;index as i">
+                          <td class="col-4">{{match.Match_sTeam1}}</td>
+                          <td class="text-center font-weight-bold">
+                            <input type="hidden" name="match{{i}}" [(ngModel)]="match.Match_iId" >
+                            <input type="number" name="goalA{{i}}" [(ngModel)]="match.Match_iGoal1">
+                             -
+                            <input type="number" name="goalB{{i}}" [(ngModel)]="match.Match_iGoal2">
+                            <input type="checkbox" name="state{{i}}" [checked]="match.Match_iState === '1'" (change)="setState($event, match)" value="1">
+                          </td>
+                          <td class="col-4">{{match.Match_sTeam2}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="form-group mt-4 mb-0">
+                      <button type="submit" class="btn btn-primary btn-block" [disabled]='f.invalid'>
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer text-center">
+                  <div class="small"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div id="layoutAuthentication_footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

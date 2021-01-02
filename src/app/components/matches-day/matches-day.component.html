@@ -1,7 +1,7 @@
 <div class="card mb-4" *ngIf="allMatches">
   <div class="card-header">
     <div class="col-md-12">
-      <div class="form-group row">
+      <div class="form-group row m-0">
         <select class="form-control" name="day" id="day" [(ngModel)]="day" (change)="changeHandler()">
           <option *ngFor="let day of days;" [value]="day">{{day}}</option>
         </select>
@@ -10,29 +10,27 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-        <div class="row">
-          <div class="col-sm-12">
+      <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4 container p-0">
+          <div class="col-sm-12 p-0">
             <table class="table table-bordered dataTable">
               <thead>
                 <tr class="bg-primary">
                   <th role="col" colspan="3" class="text-center text-white">
-                    <span>{{dayMatches[0].round}}</span>
+                    <span>{{dayMatches[0].Match_sRound}}</span>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let match of dayMatches">
-                  <td class="col-5" >{{match.team1}}</td>
-                  <td *ngIf="match.score; then giocata else prevista"></td>
-                  <ng-template #giocata><td class="text-center font-weight-bold">{{match.score.ft[0]}} - {{match.score.ft[1]}}</td></ng-template>
-                  <ng-template #prevista><td class="text-center font-weight-bold">{{ match.date | date : 'dd/MM/yy'}}</td></ng-template>
-                  <td class="col-5">{{match.team2}}</td>
+                  <td class="col-5" >{{match.Match_sTeam1}}</td>
+                  <td *ngIf="match.Match_iState === '1'; then giocata else prevista"></td>
+                  <ng-template #giocata><td class="text-center font-weight-bold">{{match.Match_iGoal1}} - {{match.Match_iGoal2}}</td></ng-template>
+                  <ng-template #prevista><td class="text-center font-weight-bold">{{ match.Match_sDate | date : 'dd/MM/yy'}}</td></ng-template>
+                  <td class="col-5">{{match.Match_sTeam2}}</td>
                 </tr>
               </tbody>
             </table>
           </div>
-        </div>
       </div>
     </div>
   </div>
