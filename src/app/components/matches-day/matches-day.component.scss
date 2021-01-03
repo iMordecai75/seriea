@@ -1,0 +1,7 @@
+table {
+  font-size: 0.5rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 1rem;
+  }
+}

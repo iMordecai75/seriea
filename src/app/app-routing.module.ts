@@ -9,7 +9,7 @@ import { LoginGuard } from './login.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user_ranking', component: FormComponent, canActivate: [LoginGuard] },
+  { path: 'user-ranking', component: FormComponent, canActivate: [LoginGuard] },
   { path: 'update-results', component: FormMatchDayComponent, canActivate: [LoginGuard] },
   {
     path: 'logout',

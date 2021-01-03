@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavComponent implements OnInit {
 
+  isCollapsed: any;
+
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {

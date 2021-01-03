@@ -1,14 +1,16 @@
 <div id="layoutSidenav">
-  <div id="layoutSidenav_nav"></div>
   <div id="layoutSidenav_content">
     <main>
       <div class="container-fluid">
         <h1 class="mt-4">Serie A - 2020/21</h1>
         <div class="row">
-          <div class="col-xl-6 col-md-12">
+          <div class="col-12 col-lg-6 order-lg-2 col-xl-4 order-xl-1">
+            <app-usersranking></app-usersranking>
+          </div>
+          <div class="col-12 col-lg-6 order-lg-3 col-xl-4 order-xl-2">
             <app-ranking></app-ranking>
           </div>
-          <div class="col-xl-6 col-md-12">
+          <div class="col-12 order-lg-1 col-xl-4 order-xl-3">
             <app-matches-day></app-matches-day>
           </div>
         </div>

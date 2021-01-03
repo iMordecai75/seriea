@@ -15,6 +15,8 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { FormMatchDayComponent } from './components/form-match-day/form-match-day.component';
+import { UsersrankingComponent } from './components/usersranking/usersranking.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,15 @@ import { FormMatchDayComponent } from './components/form-match-day/form-match-da
     ReplacePipe,
     HomeComponent,
     RankingComponent,
-    FormMatchDayComponent
+    FormMatchDayComponent,
+    UsersrankingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

@@ -62,7 +62,7 @@ export class FormMatchDayComponent implements OnInit {
         value: JSON.stringify(this.dayMatches)
       }
     ];
-    this.ranking.postResults(data)
+    this.ranking.patchResults(data)
       .subscribe((res: ApiResponse) => {
         if (res.status === 'OK') {
           this.message = 'Risultati aggiornati con successo';

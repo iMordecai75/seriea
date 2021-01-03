@@ -29,20 +29,6 @@ export class RankingService {
     return this.http.get<ApiResponse>(`${API}/forecasts.php`, { headers: options });
   }
 
-  postForecasts(datiForm: any[]): Observable<ApiResponse> {
-    const token = localStorage.getItem('token');
-    const options = this.headers(token);
-    const body = this.body(datiForm);
-
-    return this.http.post<ApiResponse>(`${API}/forecasts.php`, body, { headers: options })
-      .pipe(
-        map((res: ApiResponse) => {
-          return res;
-        }),
-        catchError(this.errorHandler)
-      );
-  }
-
   getMatchsDay(): Observable<ApiResponse> {
     return this.http.get<ApiResponse>(`${API}/matches.php`);
   }
@@ -51,12 +37,16 @@ export class RankingService {
     return this.http.get<ApiResponse>(`${API}/ranking.php`);
   }
 
-  postResults(data: any[]): Observable<ApiResponse> {
+  getUsersRanking(): Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(`${API}/forecastranking.php`);
+  }
+
+  postForecasts(datiForm: any[]): Observable<ApiResponse> {
     const token = localStorage.getItem('token');
     const options = this.headers(token);
-    const body = this.body(data);
+    const body = this.body(datiForm);
 
-    return this.http.patch<ApiResponse>(`${API}/matches.php`, body, { headers: options })
+    return this.http.post<ApiResponse>(`${API}/forecasts.php`, body, { headers: options })
       .pipe(
         map((res: ApiResponse) => {
           return res;
@@ -77,6 +67,20 @@ export class RankingService {
             return res;
           }
         ),
+        catchError(this.errorHandler)
+      );
+  }
+
+  patchResults(data: any[]): Observable<ApiResponse> {
+    const token = localStorage.getItem('token');
+    const options = this.headers(token);
+    const body = this.body(data);
+
+    return this.http.patch<ApiResponse>(`${API}/matches.php`, body, { headers: options })
+      .pipe(
+        map((res: ApiResponse) => {
+          return res;
+        }),
         catchError(this.errorHandler)
       );
   }
