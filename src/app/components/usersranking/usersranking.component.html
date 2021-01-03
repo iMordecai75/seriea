@@ -1,0 +1,59 @@
+<div class="card mb-4" *ngIf="usersranking">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-10">
+        <h3>Classifica Utenti</h3>
+      </div>
+      <div class="col-2 text-right"><span (click)="openScrollableContent(longContent)"><i class="fa fa-info-circle"></i></span></div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <div id="rankingTable_wrapper" class="dataTables_wrapper dt-bootstrap4 container p-0">
+        <div class="col-sm-12 p-0">
+          <table class="table table-bordered dataTable" width="100%">
+            <thead>
+              <tr class="bg-primary">
+                <th role="col" class="text-center text-white" style="width: 10%">#</th>
+                <th role="col" class="text-center text-white">
+                  User
+                </th>
+                <th role="col" class="text-center text-white">P</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usersranking; index as i">
+                <td class="text-center" style="width: 10%">{{i+1}}</td>
+                <td>{{user.User_sFirstname}} {{user.User_sLastname}}</td>
+                <td class="text-center">{{user.punti}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Punteggi</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>La classifica sarà così calcolata:</p>
+    <p>10 punti per la prima classificata</p>
+    <p>6 punti per la seconda</p>
+    <p>5 punti per la terza</p>
+    <p>4 punti per la quarta</p>
+    <p>3 punti per la quinta</p>
+    <p>2 punti per la sesta</p>
+    <p>2 punti per ogni squadra in zona Champions League</p>
+    <p>1 punto per ogni squadra in zona Europa League</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
